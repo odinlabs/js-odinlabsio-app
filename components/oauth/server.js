@@ -47,6 +47,12 @@ server.deserializeClient((id, done) => {
 // values, and will be exchanged for an access token.
 server.grant(oauth2orize.grant.code((client, redirectUri, user, ares, done) => {
     logger.debug('server-grant-code %s %s %s %s', user, client.client_id, ares, redirectUri);
+    if (!client) {
+        return done(new Error("Undefined client"));
+    }
+    if (!user) {
+        return done(new Error("Undefined user"));
+    }
     const scope = [];
     Object.keys(ares.permissions).forEach(function (key) {
         var val = ares.permissions[key];
@@ -71,8 +77,12 @@ server.grant(oauth2orize.grant.code((client, redirectUri, user, ares, done) => {
                 return done(err);
             }
             logger.debug('server-grant-jwt %s', jwt_token);
-            const result = Promise.all([db.saveAuthorizationCode(grant_token), db.saveConsentData({code: uuid, consentData: ares.permissions})]);
+            const result = Promise.all([db.saveAuthorizationCode(grant_token), db.saveConsentData({code: uuid, consentData: ares.permissions})]).catch(err => {
+                console.log(err);
+            });
+            console.log("save");
             awaitPromise(result, (err, tokens) => {
+                console.log("save returned");
                 if (err) {
                     error.error('server-grant-code failed %s', err);
                     return done(err);
