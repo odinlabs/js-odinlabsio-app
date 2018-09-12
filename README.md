@@ -18,9 +18,8 @@ OdinLabs IO develops set of tools allowing web application developers to collect
 
 ### Quick Summary
 
-OdinLabsIO APP is an Oauth2 server:
-- simple user authentification
-OdinLabsIO APP is a consent management server:
+OdinLabsIO APP is an express web app providing:
+- verifiable user authentification
 - signed and verifiable user consent collection
 
 ## How it works
