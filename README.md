@@ -24,7 +24,7 @@ OdinLabsIO APP is an express web app providing:
 
 ## How it works
 
-odinlabs-app provides authentification and consent service as an Oauth2 endpoints. js-odinlabsio-sdk is an express middleware similar to passport-js wrapping calls to the previous endpoints.
+odinlabs-app provides authentification and consent service as an Oauth2 endpoints. [js-odinlabsio-sdk](https://github.com/odinlabs/js-odinlabsio-sdk) is an express middleware similar to passport-js wrapping calls to the previous endpoints.
 
 ### Authentification
 SSO style user authentification
@@ -76,7 +76,9 @@ client can configure consent preferences and dialogs through odinlabs-app-develo
 
 ### Consent Verification
 
-TODO
+Consent dialog and content can be customized through the developer web app.
+
+[js-odinlabsio-developers](https://github.com/odinlabs/js-odinlabsio-developers)
 
 ## License
 
