@@ -1,0 +1,138 @@
+.strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+.strike > span {
+    position: relative;
+    display: inline-block;
+}
+
+.strike > span:before,
+.strike > span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: #7f85a8;
+}
+
+.strike > span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.strike > span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+.background-dark {
+    height:1000px;
+    background:#475d62 url(../../assets/img/star-sky.jpg);
+    background-size:cover;
+    position:relative;
+}
+  
+.background-dark div {
+    max-width:520px;
+    width:90%;
+    background-color:#1e2833;
+    padding:40px;
+    border-radius:4px;
+    transform:translate(-50%, -50%);
+    position:absolute;
+    top:50%;
+    left:50%;
+    color:#fff;
+    box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.background-dark .dropdown-menu {
+  max-width:80%;
+  width:80%;
+  background-color:white;
+  padding:40px;
+  border-radius:4px;
+  transform:translate(-50%, -50%);
+  position:absolute;
+  top:50%;
+  left:50%;
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.background-dark div .link {
+    display:block;
+    text-align:center;
+    font-size:12px;
+    color:#495866;
+    opacity:0.9;
+    text-decoration:none;
+  }
+  
+  .background-dark div .link:hover, .background-dark div .link:active {
+    opacity:1;
+    text-decoration:none;
+  }
+
+   /* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {display:none;}
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(233, 104, 104);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #68421a;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #0cce84;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #0cce84;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  } 
