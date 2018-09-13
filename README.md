@@ -10,6 +10,10 @@ Welcome to OdinLabs IO.
   - [Authentification](#authentification)
   - [Signed Consent Collection](#signed-consent-collection)
   - [Consent Configuration](#consent-configuration)
+- [Usage](#usage)
+  - [Create app id and secret](#create-app-id-and-secret)
+  - [Configure SDK](#configure-sdk)
+  - [Example](#example)
 - [License](#license)
 
 ## Overview
@@ -77,6 +81,14 @@ client can configure consent preferences and dialogs. For consent configuration 
 ### Consent Verification
 
 todo consent verification
+
+## Usage
+
+### Create app id and secret
+
+### Configure SDK
+
+### Example
 
 ## License
 
