@@ -7,9 +7,9 @@ Welcome to OdinLabs IO.
 - [Overview](#overview)
   - [Quick Summary](#quick-summary)
 - [How it works](#how-it-works)
-  - [Authentification]
-  - [Signed Consent Collection]
-  - [Consent Configuration]
+  - [Authentification](#authentification)
+  - [Signed Consent Collection](#signed-consent-collection)
+  - [Consent Configuration](#consent-configuration)
 - [License](#license)
 
 ## Overview
@@ -72,13 +72,11 @@ app.get('/odinsdk/callback/consent', ConsentServerInstance.consent(), function (
 
 ### Consent Configuration
 
-client can configure consent preferences and dialogs through odinlabs-app-developers-app.
+client can configure consent preferences and dialogs. For consent configuration refer too [js-odinlabsio-developers](https://github.com/odinlabs/js-odinlabsio-developers)
 
 ### Consent Verification
 
-Consent dialog and content can be customized through the developer web app.
-
-[js-odinlabsio-developers](https://github.com/odinlabs/js-odinlabsio-developers)
+todo consent verification
 
 ## License
 
