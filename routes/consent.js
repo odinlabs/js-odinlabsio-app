@@ -16,7 +16,9 @@ module.exports.configure = (done) => {
     // get consent dialog
     router.get('/', login.ensureLoggedIn(), oauthServer.authorization, (request, response, next) => {
         return taxonomy.tree(taxonomy.schema, (errDST, schemaTree) => {
-            if (errDST) return next(errDST);
+            if (errDST) { 
+                return next(errDST); 
+            }
             const data = [];
             request.oauth2.client.ccubePermissionDesc.forEach((desc) => {
                 if (request.oauth2.req.scope.lastIndexOf(desc.name) !== -1) {
@@ -29,12 +31,21 @@ module.exports.configure = (done) => {
             });
             logger.appLog.debug('Consent Taxonomy Tree : %s', data);
             return taxonomy.flat(data, (errFlat, flatTree) => {
+                if (errFlat) {
+                    return next(errFlat);
+                }
                 logger.appLog.debug('Consent Taxonomy Flat : %s', flatTree);
+                if (flatTree && flatTree.length > 0) {
 
-                response.render('consent', { transaction_id: request.oauth2.transactionID, grants: { permissions: flatTree } });
+                    return response.render('consent', { transaction_id: request.oauth2.transactionID, grants: { permissions: flatTree } });
+                } else {
+                    
+                    request.oauth2.info = { permissions: [] };
+                    return next();
+                }
             })
         });
-    });
+    }, oauthServer.grant);
     // post consent data in session
     router.post('/authorization/data', login.ensureLoggedIn(), (request, response, next) => {
         response.locals = response.locals || {};
@@ -100,7 +111,7 @@ module.exports.configure = (done) => {
                 const user = { id: accessToken.user._id, username: accessToken.user.facebook.name, provider: "facebook" };
                 return db.getConsent(accessToken.consentCode).then((consent) => {
                     if (consent) {
-                        return response.send({user, permission: consent.permission});
+                        return response.send({ user, permission: consent.permission });
                     }
                     return response.sendStatus(400);
                 });
@@ -114,12 +125,12 @@ module.exports.configure = (done) => {
         db.getAccessToken(request.oauth.jti).then((accessToken) => {
             logger.appLog.debug("Retrieve permission for acces token %s", accessToken);
             if (accessToken) {
-               return db.getConsentData(accessToken.consentCode).then((consent) => {
-                   if (consent) {
-                        return response.send({permission: consent.consentData});
-                   }
-                   return response.sendStatus(400);
-               })
+                return db.getConsentData(accessToken.consentCode).then((consent) => {
+                    if (consent) {
+                        return response.send({ permission: consent.consentData });
+                    }
+                    return response.sendStatus(400);
+                })
             }
             return response.sendStatus(400);
         }).catch((err) => { next(err); });

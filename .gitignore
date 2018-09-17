@@ -61,4 +61,6 @@ typings/
 .next
 
 # app secret
-config/auth/
+config/auth/facebook-config.js
+config/auth/googleplus-config.js
+config/mongo/mongoose-config.js

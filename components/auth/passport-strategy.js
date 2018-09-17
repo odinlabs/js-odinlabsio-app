@@ -2,6 +2,7 @@
 const FacebookStrategy = require('passport-facebook').Strategy;
 const GooglePlusStrategy = require('passport-google-oauth').OAuth2Strategy;
 const mongoose = require('mongoose');
+const ClientPasswordStrategy = require('passport-oauth2-client-password').Strategy;
 const utils = require('odin-utils');
 
 
@@ -11,6 +12,7 @@ const googleplusConfig = require('../../config/auth/googleplus-config');
 const awaitPromise = utils.promise.consumeWithCallback;
 
 const UserModel = mongoose.model('UserStore');
+const ClientModel = mongoose.model('ClientStore');
 
 /**
  * Configure facebook login and googleplus login strategies for passport.
@@ -81,4 +83,23 @@ module.exports.local = (passport) => {
       done(new Error("GooglePlus strategy pending implementation"));
     }
   ));
+
+  passport.use(new ClientPasswordStrategy((clientId, clientSecret, done) => {
+    ClientModel.findOne({ client_id: clientId }).lean().then((client) => {
+      // verify client
+      if (!client) {
+        utils.logger.errorLog.error('authenticate-client client does not exist %s', clientId);
+        return done(null, false);
+      }
+      // verify client secret
+      if (client.clientSecret !== clientSecret) {
+        utils.logger.errorLog.error('authenticate-client client secret does not match %s', clientId);
+        return done(null, false);
+      }
+      return done(null, client)
+    }).catch((err) => {
+      utils.logger.errorLog.error('authenticate-client failed to authenticate client %s %s', clientId, err);
+      done(err);
+    });
+  }));
 };

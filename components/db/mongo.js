@@ -66,10 +66,11 @@ UserStore.prototype.save = saveUser;
 exports.UserStore = UserStore;
 
 /**
- * Client {id, client_id, clientSecret, redirectUris, grants}
+ * Client {id, client_id, clientPassword, clientSecret, redirectUris, grants}
  * Client: {
  *  id: Integer,
  *  client_id: String,
+ *  clientPassword: String,
  *  clientSecret: String,
  *  grants: [ String ],
  *  redirectUris: [ String ],
@@ -80,6 +81,7 @@ function ClientStore() {
 }
 const ClientStoreSchema = new Schema({
   client_id: { type: String },
+  clientPassword: { type: String },
   clientSecret: { type: String },
   grants: { type: [String] },
   redirectUris: { type: [String] },
@@ -103,6 +105,7 @@ ClientStore.prototype.findById = findClientById;
 function saveClient(client) {
   return ClientModel.create({
     client_id: client.client_id,
+    clientPassword: client.clientPassword,
     clientSecret: client.clientSecret,
     grants: client.grants,
     redirectUris: client.redirectUris,

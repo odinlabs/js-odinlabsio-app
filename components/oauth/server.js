@@ -1,5 +1,6 @@
 /** components/oauth/server.js */
 const moment = require('moment');
+const passport = require('passport');
 const oauth2orize = require('oauth2orize');
 const utils = require('odin-utils');
 const jwt = require('jsonwebtoken');
@@ -77,12 +78,10 @@ server.grant(oauth2orize.grant.code((client, redirectUri, user, ares, done) => {
                 return done(err);
             }
             logger.debug('server-grant-jwt %s', jwt_token);
-            const result = Promise.all([db.saveAuthorizationCode(grant_token), db.saveConsentData({code: uuid, consentData: ares.permissions})]).catch(err => {
-                console.log(err);
+            const result = Promise.all([db.saveAuthorizationCode(grant_token), db.saveConsentData({ code: uuid, consentData: ares.permissions })]).catch(err => {
+                error.error('server-grant-code failed to save authorization code and consent data. %s', err);
             });
-            console.log("save");
             awaitPromise(result, (err, tokens) => {
-                console.log("save returned");
                 if (err) {
                     error.error('server-grant-code failed %s', err);
                     return done(err);
@@ -160,22 +159,23 @@ server.exchange(oauth2orize.exchange.code((clientId, jwt_grant_token, redirectUr
     });
 }));
 
-module.exports.authorization = [server.authorization((clientId, redirectUri, scope, done) => {
-    const client = db.getClient(clientId);
-    awaitPromise(client, (err, result) => {
-        if (err) {
-            return done(err);
-        }
-        if (result) {
-            const idx = result.redirectUris.lastIndexOf(redirectUri);
-            if (idx === -1) {
-                return done(new Error(`Unauthorized URI ${redirectUri}`));
+module.exports.authorization = [
+    server.authorization((clientId, redirectUri, scope, done) => {
+        const client = db.getClient(clientId);
+        awaitPromise(client, (err, result) => {
+            if (err) {
+                return done(err);
             }
-            return done(null, result, redirectUri);
-        }
-        return done(new Error(`Unauthorized Client ${clientId}`));
-    });
-}), server.errorHandler({ mode: 'indirect' })];
+            if (result) {
+                const idx = result.redirectUris.lastIndexOf(redirectUri);
+                if (idx === -1) {
+                    return done(new Error(`Unauthorized URI ${redirectUri}`));
+                }
+                return done(null, result, redirectUri);
+            }
+            return done(new Error(`Unauthorized Client ${clientId}`));
+        });
+    }), server.errorHandler({ mode: 'indirect' })];
 
 module.exports.resume = server.resume((oauth, done) => {
     return done(null, false, { permissions: oauth.locals.permissions });
@@ -189,5 +189,7 @@ module.exports.grant = server.decision((req, done) => {
     return done(null, params);
 });
 
-module.exports.token = [server.token(), server.errorHandler()];
-
+module.exports.token = [
+    passport.authenticate(['oauth2-client-password'], { session: false }),
+    server.token(),
+    server.errorHandler()];
