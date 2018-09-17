@@ -93,7 +93,7 @@ todo consent verification
 ![Alt text](/doc/images/app-account-description.png?raw=true "Create Account Description and Secrets")
 
 #### Create Oauth settings
-![Alt text](/doc/images/app-account-redirect-uris.png?raw=true "Create OAuth Callback URIs")
+![Alt text](/doc/images/app-accout-redirect-uris.png?raw=true "Create OAuth Callback URIs")
 
 #### Create Consent
 ![Alt text](/doc/images/app-account-permission.png?raw=true "Create Consent")
