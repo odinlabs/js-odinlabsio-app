@@ -85,14 +85,20 @@ todo consent verification
 ## Usage
 
 ### Create app id and secret
+
 #### Create app account
-![Alt text](/doc/image/create-account.jpg?raw=true "Create Account")
+![Alt text](/doc/images/signup.png?raw=true "Create Account")
+
+#### Create app description and secret
+![Alt text](/doc/images/app-account-description.png?raw=true "Create Account Description and Secrets")
 
 #### Create Oauth settings
-![Alt text](/doc/image/to/create-oauth.jpg?raw=true "Create OAuth")
+![Alt text](/doc/images/app-account-redirect-uris.png?raw=true "Create OAuth Callback URIs")
 
 #### Create Consent
-![Alt text](/doc/image/to/create-consent.jpg?raw=true "Create Consent")
+![Alt text](/doc/images/app-account-permission.png?raw=true "Create Consent")
+
+![Alt text](/doc/images/user-grants-simple.png?raw=true "Consent User View")
 
 ### Configure SDK
 
