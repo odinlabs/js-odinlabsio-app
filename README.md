@@ -7,9 +7,13 @@ Welcome to OdinLabs IO.
 - [Overview](#overview)
   - [Quick Summary](#quick-summary)
 - [How it works](#how-it-works)
-  - [Authentification]
-  - [Signed Consent Collection]
-  - [Consent Configuration]
+  - [Authentification](#authentification)
+  - [Signed Consent Collection](#signed-consent-collection)
+  - [Consent Configuration](#consent-configuration)
+- [Usage](#usage)
+  - [Create app id and secret](#create-app-id-and-secret)
+  - [Configure SDK](#configure-sdk)
+  - [Example](#example)
 - [License](#license)
 
 ## Overview
@@ -72,13 +76,27 @@ app.get('/odinsdk/callback/consent', ConsentServerInstance.consent(), function (
 
 ### Consent Configuration
 
-client can configure consent preferences and dialogs through odinlabs-app-developers-app.
+client can configure consent preferences and dialogs. For consent configuration refer too [js-odinlabsio-developers](https://github.com/odinlabs/js-odinlabsio-developers)
 
 ### Consent Verification
 
-Consent dialog and content can be customized through the developer web app.
+todo consent verification
 
-[js-odinlabsio-developers](https://github.com/odinlabs/js-odinlabsio-developers)
+## Usage
+
+### Create app id and secret
+#### Create app account
+![Alt text](/doc/image/create-account.jpg?raw=true "Create Account")
+
+#### Create Oauth settings
+![Alt text](/doc/image/to/create-oauth.jpg?raw=true "Create OAuth")
+
+#### Create Consent
+![Alt text](/doc/image/to/create-consent.jpg?raw=true "Create Consent")
+
+### Configure SDK
+
+### Example
 
 ## License
 
