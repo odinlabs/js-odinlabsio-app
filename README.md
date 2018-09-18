@@ -93,12 +93,12 @@ todo consent verification
 <img src=/doc/images/app-account-description.png width="400" height="500" />
 
 #### Create Oauth settings
-![Alt text](/doc/images/app-accout-redirect-uris.png"Create OAuth Callback URIs")
+<img src=/doc/images/app-accout-redirect-uris.png width="400" height="500" />
 
 #### Create Consent
-![Alt text](/doc/images/app-account-permission.png?raw=true "Create Consent")
+<img src=/doc/images/app-account-permission.png width="400" height="500" />
 
-![Alt text](/doc/images/user-grants-simple.png?raw=true "Consent User View")
+<img src=/doc/images/user-grants-simple.png width="400" height="500" />
 
 ### Configure SDK
 
