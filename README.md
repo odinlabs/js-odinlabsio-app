@@ -96,9 +96,15 @@ todo consent verification
 <img src=/doc/images/app-accout-redirect-uris.png width="400" height="400" />
 
 #### Create Consent
+Client can configure permission level at multiple level.
+
+Client permission configuration:
+
 <img src=/doc/images/app-account-permission.png width="400" height="500" />
 
-<img src=/doc/images/user-grants-simple.png width="200" height="200" />
+User permission dialog:
+
+<img src=/doc/images/user-grants-simple.png width="300" height="300" />
 
 ### Configure SDK
 
