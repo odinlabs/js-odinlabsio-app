@@ -85,14 +85,26 @@ todo consent verification
 ## Usage
 
 ### Create app id and secret
+
 #### Create app account
-![Alt text](/doc/image/create-account.jpg?raw=true "Create Account")
+<img src=/doc/images/signup.png width="400" height="500" />
+
+#### Create app description and secret
+<img src=/doc/images/app-account-description.png width="400" height="400" />
 
 #### Create Oauth settings
-![Alt text](/doc/image/to/create-oauth.jpg?raw=true "Create OAuth")
+<img src=/doc/images/app-accout-redirect-uris.png width="400" height="400" />
 
 #### Create Consent
-![Alt text](/doc/image/to/create-consent.jpg?raw=true "Create Consent")
+Client can configure permission level at multiple level.
+
+Client permission configuration:
+
+<img src=/doc/images/app-account-permission.png width="400" height="500" />
+
+User permission dialog:
+
+<img src=/doc/images/user-grants-simple.png width="300" height="300" />
 
 ### Configure SDK
 
