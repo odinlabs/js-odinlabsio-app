@@ -87,7 +87,7 @@ todo consent verification
 ### Create app id and secret
 
 #### Create app account
-![Alt text](/doc/images/signup.png?raw=true "Create Account")
+![Alt text](/doc/images/signup.png?raw=true&s=200 "Create Account")
 
 #### Create app description and secret
 ![Alt text](/doc/images/app-account-description.png?raw=true "Create Account Description and Secrets")
