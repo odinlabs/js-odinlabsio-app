@@ -90,15 +90,15 @@ todo consent verification
 <img src=/doc/images/signup.png width="400" height="500" />
 
 #### Create app description and secret
-<img src=/doc/images/app-account-description.png width="400" height="500" />
+<img src=/doc/images/app-account-description.png width="400" height="400" />
 
 #### Create Oauth settings
-<img src=/doc/images/app-accout-redirect-uris.png width="400" height="500" />
+<img src=/doc/images/app-accout-redirect-uris.png width="400" height="400" />
 
 #### Create Consent
 <img src=/doc/images/app-account-permission.png width="400" height="500" />
 
-<img src=/doc/images/user-grants-simple.png width="400" height="500" />
+<img src=/doc/images/user-grants-simple.png width="200" height="200" />
 
 ### Configure SDK
 
