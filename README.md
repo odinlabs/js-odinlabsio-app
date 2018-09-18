@@ -88,7 +88,7 @@ todo consent verification
 
 #### Create app account
 ![Alt text](/doc/images/signup.png?raw=true&s=100 "Create Account")
-<img src=/doc/images/signup.png width="auto" max-height="50%" />
+<img src=/doc/images/signup.png width="400" height="500" />
 
 #### Create app description and secret
 ![Alt text](/doc/images/app-account-description.png?raw=true "Create Account Description and Secrets")
